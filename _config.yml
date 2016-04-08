@@ -1,6 +1,0 @@
-name:          Как работать с CSS-препроцессорами
-description:   Список рекомендаций по неусложнению жизни себе и другим участникам проекта по вёрстке.
-
-markdown:      rdiscount
-permalink:     pretty
-pygments:      true
