@@ -8,15 +8,15 @@ layout: default
 </div>
 <div class="section toc">
   <div class="col">
-    <h4><a href="#pre-css">LESS, SASS, stylus, PostCSS...</a></h4>
-    <ul>
-      <li><a href="#">Syntax</a></li>
-    </ul>
-  </div>
-  <div class="col">
     <h4><a href="#bem">БЭМ</a></h4>
     <ul>
       <li><a href="#">syntax</a></li>
+    </ul>
+  </div>
+  <div class="col">
+    <h4><a href="#pre-css">LESS, SASS, stylus, PostCSS...</a></h4>
+    <ul>
+      <li><a href="#">Syntax</a></li>
     </ul>
   </div>
 </div>
@@ -29,10 +29,47 @@ layout: default
   </div>
   <div class="col">
     <ol>
-      <li>Весь код проекта должен выглядеть так, словно он написан одним человеком, вне зависимости от количества разработчиков.</li>
-      <li>Делать нужно настолько просто, насколько возможно. Но не проще.</li>
-      <li>Любой инструмент при бездумном использовании может выстрелить мастеру в ногу.</li>
+      <li>Весь код проекта должен выглядеть так, словно он написан одним человеком, вне&nbsp;зависимости от&nbsp;количества разработчиков.</li>
+      <li>Делать нужно настолько просто, насколько возможно. Но&nbsp;не&nbsp;проще.</li>
+      <li>Любой инструмент при бездумном использовании может выстрелить в&nbsp;ногу.</li>
     </ol>
+  </div>
+</div>
+
+
+
+<div class="heading" id="bem">
+  <h2>БЭМ (как метод именования селекторов)</h2>
+</div>
+
+<div class="section" id="">
+  <div class="col">
+    <h3>Зачем</h3>
+    <ul>
+      <li>Имитация пространства имён</li>
+      <li>Самодокументируемость</li>
+      <li>Отсутствие зависимости от DOM-структуры</li>
+      <li>Простота модификации</li>
+    </ul>
+    <p>Само понятие БЭМ — не только метод именования селекторов, но парадигма восприятия проекта как набора сущностей (блоки, элементы, модификаторы). Полный стек БЭМ подразумевает двойную шаблонизацию и имеет относительно высокий порог входа. Используйте БЭМ хотя бы как способ именования селекторов.</p>
+  </div>
+  <div class="col">
+    <blockquote>
+      <p>Нет более простой, универсальной, удобной концепции чем БЭМ.</p>
+    </blockquote>
+  </div>
+</div>
+
+<div class="section" id="">
+  <div class="col">
+    <h3>Зачем</h3>
+    <ul>
+      <li></li>
+    </ul>
+    <p>Questions</p>
+  </div>
+  <div class="col">
+    {% highlight css %}{% include bem/block-and-element.html %}{% endhighlight %}
   </div>
 </div>
 
@@ -51,24 +88,5 @@ layout: default
   </div>
   <div class="col">
     {% highlight html %}{% include pre-css/ampersand.less %}{% endhighlight %}
-  </div>
-</div>
-
-
-
-<div class="heading" id="bem">
-  <h2>БЭМ</h2>
-</div>
-
-<div class="section" id="">
-  <div class="col">
-    <h3>Syntax</h3>
-    <ul>
-      <li>Use</li>
-    </ul>
-    <p>Questions</p>
-  </div>
-  <div class="col">
-    {% highlight css %}{% include bem/block-and-element.html %}{% endhighlight %}
   </div>
 </div>
