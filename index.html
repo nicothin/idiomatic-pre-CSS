@@ -38,10 +38,12 @@
         <li><a href="#bem-elem">Элемент — часть БЭМ-блока</a></li>
         <li><a href="#bem-elem-in">Элемент нельзя использовать вне&nbsp;его&nbsp;блока</a></li>
         <li><a href="#bem-no-elem">Элементов может не&nbsp;быть</a></li>
+        <li><a href="#bem-block-elem">Как отличить БЭМ-блок и БЭМ-элемент</a></li>
         <li><a href="#bem-mod">Модификатор — дополнительный класс для&nbsp;смены оформления или&nbsp;поведения</a></li>
         <li><a href="#bem-mod-mariage">Модификатор нельзя использовать самостоятельно</a></li>
         <li><a href="#mix">Миксование — наличие класса БЕМ-блока и класса БЭМ-элемента у одного тега</a></li>
         <li><a href="#bem-files">Один БЭМ-блок = один файл</a></li>
+        <li><a href="#bem-not-dom">БЭМ-дерево плоское, в отличие от DOM</a></li>
       </ul>
     </div>
     <div class="col">
@@ -76,10 +78,11 @@
     <div class="col">
       <h3>Зачем</h3>
       <ul>
-        <li>Имитация пространства имён</li>
-        <li>Самодокументируемость</li>
-        <li>Отсутствие зависимости от DOM-структуры</li>
-        <li>Простота модификации</li>
+        <li>Самодокументируемость.</li>
+        <li>Имитация пространства имён (простота и безопасность модификации).</li>
+        <li>Отсутствие зависимости от DOM-структуры.</li>
+        <li>Проектное реиспользования блоков.</li>
+        <li>Кросспроектное реиспользования блоков.</li>
       </ul>
     </div>
     <div class="col">
@@ -165,9 +168,7 @@
   <div class="section" id="bem-elem-in">
     <div class="col">
       <h3>Элемент нельзя использовать вне&nbsp;его&nbsp;блока</h3>
-      <ul>
-        <li>Элемент — <strong>всегда часть блока</strong>, вне своего блока использоваться не&nbsp;должен.</li>
-      </ul>
+      <P>Элемент — <strong>всегда часть блока</strong>, вне своего блока использоваться не&nbsp;должен.</p>
     </div>
     <div class="col">
       <pre class="code">
@@ -190,9 +191,7 @@
   <div class="section" id="bem-no-elem">
     <div class="col">
       <h3>Элементов может не&nbsp;быть</h3>
-      <ul>
-        <li>Не у всех блоков должны быть элементы: кнопка — всегда БЕМ-блок, но БЭМ-элементы у неё внутри встречаются относительно редко.</li>
-      </ul>
+      <p>Не у всех блоков должны быть элементы: кнопка — всегда БЕМ-блок, но БЭМ-элементы у неё внутри встречаются относительно редко.</p>
     </div>
     <div class="col">
       <pre class="code">
@@ -201,6 +200,15 @@
           <span class="code__line">&lt;a class=&quot;btn&quot; href=&quot;&quot;&gt;Скачать&lt;/a&gt;</span>
         </code>
       </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-block-elem">
+    <div class="col">
+      <h3>Как отличить БЭМ-блок и БЭМ-элемент</h3>
+      <p>Просто задайте себе вопрос: эта сущность может потребоваться мне отдельно, сама по себе? Или она нужна только внутри её родителя? Если нужна отдельно — это БЭМ-блок, если мыслима только внутри родителя — это БЭМ-элемент.</p>
+      <p>В действительно сомнительных случаях делайте выбор в пользу БЭМ-блока.</p>
+      <p>Изредка бывает так, что проект развивается и некоторые БЭМ-элементы может потребоваться сделать БЭМ-блоками. Старайтесь предугадывать подобный исход событий.</p>
     </div>
   </div>
 
@@ -229,9 +237,7 @@
   <div class="section" id="bem-mod-mariage">
     <div class="col">
       <h3>Модификатор нельзя использовать самостоятельно</h3>
-      <ul>
-        <li>Класс модификатор никогда не&nbsp;должен использоваться самостоятельно, но&nbsp;всегда только с&nbsp;тем классом, который он&nbsp;модифицирует.</li>
-      </ul>
+      <p>Класс модификатор никогда не&nbsp;должен использоваться самостоятельно, но&nbsp;всегда только с&nbsp;тем классом, который он&nbsp;модифицирует.</p>
     </div>
     <div class="col">
       <pre class="code">
@@ -277,9 +283,7 @@
   <div class="section" id="bem-files">
     <div class="col">
       <h3>Один БЭМ-блок = один файл</h3>
-      <ul>
-        <li>В файловой системе при работе с CSS-препроцессорами каждый БЭМ-блок должен быть описан в своём отдельном файле.</li>
-      </ul>
+      <p>В файловой системе при работе с CSS-препроцессорами каждый БЭМ-блок должен быть описан в своём отдельном файле.</p>
     </div>
     <div class="col">
       <pre class="code">
@@ -292,6 +296,32 @@
           <span class="code__line">&lt;!-- файл promo.less --&gt;</span>
           <span class="code__line">&lt;div class=&quot;promo&quot;&gt;</span>
           <span class="code__line">  ...</span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-not-dom">
+    <div class="col">
+      <h3>БЭМ-дерево плоское, в отличие от DOM</h3>
+      <p>В классах БЭМ-элементов нельзя прописывать иерархию (два и более сегмента <code>__</code> недопустимы).</p>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;div class=&quot;promo&quot;&gt;</span>
+          <span class="code__line">  &lt;div class=&quot;promo__description&quot;&gt;</span>
+          <span class="code__line">    &lt;!-- Нет ошибки: вложенный элемент не имеет особенностей --&gt;</span>
+          <span class="code__line">    &lt;a class=&quot;promo__link&quot; href=&quot;&quot;&gt;...&lt;/a&gt;</span>
+          <span class="code__line">  &lt;/div&gt;</span>
+          <span class="code__line">&lt;/div&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">&lt;div class=&quot;promo&quot;&gt;</span>
+          <span class="code__line">  &lt;div class=&quot;promo__description&quot;&gt;</span>
+          <span class="code__line">    &lt;!--ОШИБКА: попытка прописать иерархию --&gt;</span>
+          <span class="code__line">    &lt;a class=&quot;promo__description__link&quot; href=&quot;&quot;&gt;...&lt;/a&gt;</span>
+          <span class="code__line">  &lt;/div&gt;</span>
           <span class="code__line">&lt;/div&gt;</span>
         </code>
       </pre>
