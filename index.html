@@ -32,7 +32,16 @@
     <div class="col">
       <h4><a href="#bem">БЭМ</a></h4>
       <ul>
-        <li><a href="#">syntax</a></li>
+        <li><a href="#bem-cool">Зачем</a></li>
+        <li><a href="#bem-block">Блок — это самостоятельная часть страницы</a></li>
+        <li><a href="#bem-block-inside">Блоки можно и&nbsp;нужно вкладывать друг в&nbsp;друга</a></li>
+        <li><a href="#bem-elem">Элемент — часть БЭМ-блока</a></li>
+        <li><a href="#bem-elem-in">Элемент нельзя использовать вне&nbsp;его&nbsp;блока</a></li>
+        <li><a href="#bem-no-elem">Элементов может не&nbsp;быть</a></li>
+        <li><a href="#bem-mod">Модификатор — дополнительный класс для&nbsp;смены оформления или&nbsp;поведения</a></li>
+        <li><a href="#bem-mod-mariage">Модификатор нельзя использовать самостоятельно</a></li>
+        <li><a href="#mix">Миксование — наличие класса БЕМ-блока и класса БЭМ-элемента у одного тега</a></li>
+        <li><a href="#bem-files">Один БЭМ-блок = один файл</a></li>
       </ul>
     </div>
     <div class="col">
@@ -63,7 +72,7 @@
     <h2>БЭМ (как метод именования селекторов)</h2>
   </div>
 
-  <div class="section" id="">
+  <div class="section" id="bem-cool">
     <div class="col">
       <h3>Зачем</h3>
       <ul>
@@ -72,33 +81,217 @@
         <li>Отсутствие зависимости от DOM-структуры</li>
         <li>Простота модификации</li>
       </ul>
-      <p>Само понятие БЭМ — не только метод именования селекторов, но парадигма восприятия проекта как набора сущностей (блоки, элементы, модификаторы). Полный стек БЭМ подразумевает двойную шаблонизацию и имеет относительно высокий порог входа. Используйте БЭМ хотя бы как способ именования селекторов.</p>
     </div>
     <div class="col">
-      <blockquote>
-        <p>Нет более простой, универсальной, удобной концепции чем БЭМ.</p>
-      </blockquote>
+      <p>Само понятие БЭМ — не только метод именования селекторов, но парадигма восприятия проекта как набора сущностей (блоки, элементы, модификаторы). Полный стек БЭМ подразумевает двойную шаблонизацию и имеет относительно высокий порог входа. Используйте БЭМ хотя бы как способ именования селекторов.</p>
     </div>
   </div>
 
-  <div class="section" id="">
+  <div class="section" id="bem-block">
     <div class="col">
-      <h3>Зачем</h3>
+      <h3>Блок — это самостоятельная часть страницы</h3>
       <ul>
-        <li>Имитация пространства имён</li>
-        <li>Самодокументируемость</li>
-        <li>Отсутствие зависимости от DOM-структуры</li>
-        <li>Простота модификации</li>
+        <li>Название класса должно быть простым и коротким.</li>
+        <li>Название класса должно отвечать на вопрос «Что это?»</li>
+        <li>Не используйте сокращения кроме <code>.btn</code></li>
+        <li>Название <strong>не должно</strong> отвечать на вопрос «Как выглядит?»</li>
       </ul>
-      <p>Само понятие БЭМ — не только метод именования селекторов, но парадигма восприятия проекта как набора сущностей (блоки, элементы, модификаторы). Полный стек БЭМ подразумевает двойную шаблонизацию и имеет относительно высокий порог входа. Используйте БЭМ хотя бы как способ именования селекторов.</p>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- .product — БЭМ-блок --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;product&quot;&gt;</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-block-inside">
+    <div class="col">
+      <h3>Блоки можно и&nbsp;нужно вкладывать друг в&nbsp;друга</h3>
+      <ul>
+        <li>Нет ограничений на&nbsp;вложения блоков, помимо здравого смысла.</li>
+        <li>Никакой дополнительной специфики вложенные блоки не имеют.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- .page-header — БЭМ-блок --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;page-header&quot;&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &lt;!-- .logo — вложенный БЭМ-блок --&gt;</span>
+          <span class="code__line">  &lt;a class=&quot;logo&quot;&gt;...&lt;/a&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-elem">
+    <div class="col">
+      <h3>Элемент — часть БЭМ-блока</h3>
+      <ul>
+        <li>Название класса формируется из названия блока с добавлением <code>__</code> и названия элемента.</li>
+        <li>Название класса должно быть простым и коротким.</li>
+        <li>Название класса должно отвечать на вопрос «Что это?»</li>
+        <li>Избегайте сокращений.</li>
+        <li>Название <strong>не должно</strong> отвечать на вопрос «Как выглядит?»</li>
+      </ul>
     </div>
     <div class="col">
       <pre class="code">
         <code class="code__syntax  html">
           <span class="code__line">&lt;div class=&quot;product&quot;&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &lt;!-- product__image — БЭМ-элемент блока product --&gt;</span>
+          <span class="code__line">  &lt;img class=&quot;product__image&quot; src=&quot;...&quot; alt=&quot;...&quot;&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &lt;!-- product__description — БЭМ-элемент блока product --&gt;</span>
+          <span class="code__line">  &lt;p class=&quot;product__description&quot;&gt;...&lt;/p&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  &lt;!-- product__more-link — БЭМ-элемент блока product --&gt;</span>
+          <span class="code__line">  &lt;a class=&quot;product__more-link&quot; href=&quot;&quot;&gt;...&lt;/a&gt;</span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-elem-in">
+    <div class="col">
+      <h3>Элемент нельзя использовать вне&nbsp;его&nbsp;блока</h3>
+      <ul>
+        <li>Элемент — <strong>всегда часть блока</strong>, вне своего блока использоваться не&nbsp;должен.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- Нет ошибки: элементы лежат внутри своего блока --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;product&quot;&gt;</span>
           <span class="code__line">  &lt;img class=&quot;product__image&quot; src=&quot;...&quot; alt=&quot;...&quot;&gt;</span>
           <span class="code__line">  &lt;p class=&quot;product__description&quot;&gt;...&lt;/p&gt;</span>
-          <span class="code__line">  &lt;a href=&quot;&quot; class=&quot;product__more-link&quot;&gt;...&lt;/a&gt;</span>
+          <span class="code__line">  &lt;a class=&quot;product__more-link&quot; href=&quot;&quot;&gt;...&lt;/a&gt;</span>
+          <span class="code__line">&lt;/div&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">&lt;!-- ОШИБКА: какой-то элемент вне своего блока --&gt;</span>
+          <span class="code__line">&lt;!-- (Вокруг фрагмента нет обёртки с .page-header) --&gt;</span>
+          <span class="code__line">&lt;form class=&quot;page-header__search&quot;&gt;...&lt;/form&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-no-elem">
+    <div class="col">
+      <h3>Элементов может не&nbsp;быть</h3>
+      <ul>
+        <li>Не у всех блоков должны быть элементы: кнопка — всегда БЕМ-блок, но БЭМ-элементы у неё внутри встречаются относительно редко.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- Нет ошибки: блок без элементов --&gt;</span>
+          <span class="code__line">&lt;a class=&quot;btn&quot; href=&quot;&quot;&gt;Скачать&lt;/a&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-mod">
+    <div class="col">
+      <h3>Модификатор — дополнительный класс для&nbsp;смены оформления или&nbsp;поведения</h3>
+      <ul>
+        <li>Название класса формируется из названия блока/элемента с&nbsp;добавлением <code>--</code> и&nbsp;названия модификатора.</li>
+        <li>Название должно быть простым и коротким.</li>
+        <li>Название класса может отвечать на вопросы «Что&nbsp;это?», «Что&nbsp;меняется?», «Чем отличается от&nbsp;прочих?» </li>
+        <li>Избегайте сокращений.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- .product--large — БЭМ-модификатор --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;product  product--large&quot;&gt;</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-mod-mariage">
+    <div class="col">
+      <h3>Модификатор нельзя использовать самостоятельно</h3>
+      <ul>
+        <li>Класс модификатор никогда не&nbsp;должен использоваться самостоятельно, но&nbsp;всегда только с&nbsp;тем классом, который он&nbsp;модифицирует.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- Нет ошибки: модификатор сопутствует модифицируемому классу --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;product  product--large&quot;&gt;</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">&lt;/div&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">&lt;!-- ОШИБКА: модификатор без класса, который он модифицирует --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;product--sale&quot;&gt;</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="mix">
+    <div class="col">
+      <h3>Миксование — наличие класса БЕМ-блока и класса БЭМ-элемента у одного тега</h3>
+      <ul>
+        <li>Нет ограничений на смешение БЭМ-сущностей на одном DOM-узле: cмешивать можно БЕМ-блок с БЭМ-элементом, два БЭМ-блока, два БЭМ-элемента.</li>
+        <li>Классы БЭМ-блоков следует писать первыми.</li>
+        <li>Такой подход ухудшает восприятие кода.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;div class=&quot;slider&quot;&gt;</span>
+          <span class="code__line">  &lt;div class=&quot;promo  slider__inner&quot;&gt;</span>
+          <span class="code__line">    &lt;div class=&quot;promo__item  slider__item&quot;&gt;</span>
+          <span class="code__line">      ...</span>
+          <span class="code__line">    &lt;/div&gt;</span>
+          <span class="code__line">  &lt;/div&gt;</span>
+          <span class="code__line">&lt;/div&gt;</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="bem-files">
+    <div class="col">
+      <h3>Один БЭМ-блок = один файл</h3>
+      <ul>
+        <li>В файловой системе при работе с CSS-препроцессорами каждый БЭМ-блок должен быть описан в своём отдельном файле.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  html">
+          <span class="code__line">&lt;!-- файл slider.less --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;slider&quot;&gt;</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">&lt;/div&gt;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">&lt;!-- файл promo.less --&gt;</span>
+          <span class="code__line">&lt;div class=&quot;promo&quot;&gt;</span>
+          <span class="code__line">  ...</span>
           <span class="code__line">&lt;/div&gt;</span>
         </code>
       </pre>
@@ -107,7 +300,7 @@
 
 
   <div class="heading" id="pre-css">
-    <h2>LESS, SASS, stylus, PostCSS...</h2>
+    <h2>SASS, LESS, Stylus, PostCSS...</h2>
   </div>
 
   <div class="section" id="">

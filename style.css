@@ -87,15 +87,6 @@ pre code {
   background-color: transparent;
   border: 0;
 }
-.highlight {
-  margin: 0;
-}
-.highlight pre {
-  margin-bottom: 0;
-}
-.highlight + .highlight {
-  margin-top: 1rem;
-}
 
 .col {
   padding: 2rem 1rem;
@@ -109,7 +100,7 @@ pre code {
 }
 @media (min-width: 38em) {
   .col {
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
 }
 @media (min-width: 48em) {
@@ -120,7 +111,7 @@ pre code {
   }
   .col {
     display: table-cell;
-    padding: 3rem;
+    padding: 3rem 2rem;
     vertical-align: top;
   }
   .col + .col {
