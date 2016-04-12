@@ -49,7 +49,12 @@
     <div class="col">
       <h4><a href="#pre-css">LESS, SASS, stylus, PostCSS...</a></h4>
       <ul>
-        <li><a href="#">Syntax</a></li>
+        <li><a href="#files">Файловая организация</a></li>
+        <li><a href="#nested">Вложенные селекторы</a></li>
+        <li><a href="#media">@media</a></li>
+        <li><a href="#amp">Амперсанд</a></li>
+        <li><a href="#vars">Переменные</a></li>
+        <li><a href="#mixins">Примеси</a></li>
       </ul>
     </div>
   </div>
@@ -329,8 +334,40 @@
   </div>
 
 
+
   <div class="heading" id="pre-css">
     <h2>SASS, LESS, Stylus, PostCSS...</h2>
+  </div>
+
+  <div class="section" id="files">
+    <div class="col">
+      <h3>Файловая организация</h3>
+      <ul>
+        <li>Компилируйте один файл (диспетчер подключений), в котором подключаются все прочие.</li>
+        <li>Не пишите никаких селекторов в диспетчере подключений.</li>
+        <li>Один БЭМ-блок = один препроцессорный файл. Всегда.</li>
+        <li>Файл со стилизацией БЭМ-блока должен называться так же, как сам блок.</li>
+        <li>Используйте «генераторы блоков» (<a href="https://github.com/nicothin/NTH-start-project/blob/master/createBlock.js">пример</a>) для ускорения работы.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax">
+          <span class="code__line">blocks/            # папка с БЭМ-блоками</span>
+          <span class="code__line">  page-header.less # стилизация одноименного БЭМ-блока</span>
+          <span class="code__line">  page-footer.less # стилизация одноименного БЭМ-блока</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">global/                   # папка с глобальными стилями</span>
+          <span class="code__line">  global-fonts.less       # подключение шрифтов</span>
+          <span class="code__line">  global-scaffolding.less # стилизация body, ссылок...</span>
+          <span class="code__line">  global-type.less        # типографика</span>
+          <span class="code__line">  ...</span>
+          <span class="code__line">mixins/            # папка с примесями</span>
+          <span class="code__line">style.less         # диспетчер подключений</span>
+          <span class="code__line">variables.less     # переменные проекта</span>
+        </code>
+      </pre>
+    </div>
   </div>
 
   <div class="section" id="">
@@ -341,7 +378,11 @@
       </ul>
     </div>
     <div class="col">
-
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line"> </span>
+        </code>
+      </pre>
     </div>
   </div>
 
