@@ -370,17 +370,54 @@
     </div>
   </div>
 
-  <div class="section" id="">
+  <div class="section" id="nested">
     <div class="col">
-      <h3>Syntax</h3>
+      <h3>Вложения селекторов</h3>
       <ul>
-        <li>Use</li>
+        <li>Чем меньше уровней вложенности, тем лучше.</li>
+        <li>Не допускайте более 3-х уровней вложенности (псевдоэлемены, псевдоселекторы и медиа-условия не считаются увеличивающими вложенность).</li>
+        <li>Осторожно используйте жесткое наследование.</li>
+        <li>Всегда оставляйте пустую строку перед вложенным селектором.</li>
+        <li>Всегда делайте дополнительный отступ для вложений.</li>
       </ul>
     </div>
     <div class="col">
       <pre class="code">
         <code class="code__syntax  less">
+          <span class="code__line">.promo {</span>
+          <span class="code__line">  display: block;</span>
           <span class="code__line"> </span>
+          <span class="code__line">  a {</span>
+          <span class="code__line">    color: #ff0000;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">    &:hover {</span>
+          <span class="code__line">      ...</span>
+          <span class="code__line">    }</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="media">
+    <div class="col">
+      <h3>@media</h3>
+      <ul>
+        <li>Вкладывайте <code>@media</code> в селекторы, а не наоборот.</li>
+        <li>Не вкладывайте <code>@media</code> друг в друга.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.promo {</span>
+          <span class="code__line">  display: block;</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  @media (...) {</span>
+          <span class="code__line">    display: none;</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">}</span>
         </code>
       </pre>
     </div>
