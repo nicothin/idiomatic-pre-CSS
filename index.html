@@ -352,7 +352,7 @@
     </div>
     <div class="col">
       <pre class="code">
-        <code class="code__syntax">
+        <code class="code__syntax bash">
           <span class="code__line">blocks/            # папка с БЭМ-блоками</span>
           <span class="code__line">  page-header.less # стилизация одноименного БЭМ-блока</span>
           <span class="code__line">  page-footer.less # стилизация одноименного БЭМ-блока</span>
@@ -377,7 +377,7 @@
         <li>Чем меньше уровней вложенности, тем лучше.</li>
         <li>Не допускайте более 3-х уровней вложенности (псевдоэлемены, псевдоселекторы и медиа-условия не считаются увеличивающими вложенность).</li>
         <li>Осторожно используйте жесткое наследование.</li>
-        <li>Всегда оставляйте пустую строку перед вложенным селектором.</li>
+        <li>Всегда оставляйте пустую строку перед вложенным селектором или <code>@media</code>.</li>
         <li>Всегда делайте дополнительный отступ для вложений.</li>
       </ul>
     </div>
@@ -386,11 +386,11 @@
         <code class="code__syntax  less">
           <span class="code__line">.promo {</span>
           <span class="code__line">  display: block;</span>
-          <span class="code__line"> </span>
-          <span class="code__line">  a {</span>
+          <span class="code__line">                    // пустая строка для улучшения читаемости</span>
+          <span class="code__line">  a {               // первый уровень вложенности</span>
           <span class="code__line">    color: #ff0000;</span>
-          <span class="code__line"> </span>
-          <span class="code__line">    &:hover {</span>
+          <span class="code__line">                    // пустая строка для улучшения читаемости</span>
+          <span class="code__line">    &:hover {       // не увеличивает уровень вложенности</span>
           <span class="code__line">      ...</span>
           <span class="code__line">    }</span>
           <span class="code__line">  }</span>
@@ -406,6 +406,7 @@
       <ul>
         <li>Вкладывайте <code>@media</code> в селекторы, а не наоборот.</li>
         <li>Не вкладывайте <code>@media</code> друг в друга.</li>
+        <li>Предпочтите путь mobile-first, избегайте указания <code>@media</code>-условия max-width в пользу min-width.</li>
       </ul>
     </div>
     <div class="col">
@@ -416,6 +417,10 @@
           <span class="code__line">  </span>
           <span class="code__line">  @media (...) {</span>
           <span class="code__line">    display: none;</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  @media (...) {</span>
+          <span class="code__line">    display: block;</span>
           <span class="code__line">  }</span>
           <span class="code__line">}</span>
         </code>
