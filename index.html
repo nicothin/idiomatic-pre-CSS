@@ -428,6 +428,74 @@
     </div>
   </div>
 
+  <div class="section" id="amp">
+    <div class="col">
+      <h3>Амперсанд</h3>
+      <ul>
+        <li>Используйте амперсанд только перед:
+          <ul>
+            <li>резделителем БЭМ-элемента,</li>
+            <li>резделителем БЭМ-модификатора,</li>
+            <li>псевдоэлементом или псевдоселектором.</li>
+          </ul>
+        </li>
+        <li><strong>Никогда</strong> не используйте амперсанд в&nbsp;местах разделения слов в&nbsp;селекторах.</li>
+        <li><strong>Никогда</strong> не повторяйте написанный с амперсандом селектор внутри одного контекста.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line">.promo {</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  // Правильно: амперсанд перед разделителем элемента</span>
+          <span class="code__line">  &__item {</span>
+          <span class="code__line">  </span>
+          <span class="code__line">    // НЕПРАВИЛЬНО: амперсанд в месте разделения слова</span>
+          <span class="code__line">    &-link { ... }</span>
+          <span class="code__line">  }</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  // Правильно: амперсанд перед разделителем модификатора</span>
+          <span class="code__line">  &--large { ... }</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  // Правильно: амперсанд перед псевдоклассом</span>
+          <span class="code__line">  &:hover { ... }</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  // НЕПРАВИЛЬНО: амперсанд в месте разделения слова</span>
+          <span class="code__line">  &-shover { ... }</span>
+          <span class="code__line">  </span>
+          <span class="code__line">  // НЕПРАВИЛЬНО: в этом контексте уже есть такой селектор</span>
+          <span class="code__line">  &--large { ... }</span>
+          <span class="code__line">  </span>
+          <span class="code__line">}</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="vars">
+    <div class="col">
+      <h3>Переменные</h3>
+      <ul>
+        <li>Выносите в переменные:
+          <ul>
+            <li>цвета (<a href="http://nicothin.pro/page/preprocessor-color-functions">подробнее о цветах в переменных</a>),</li>
+            <li>размеры шрифтов, шрифтовые семейства, интерлиньяж,</li>
+            <li>брейкпоинты (или условия для <code>@media</code> целиком),</li>
+          </ul>
+        </li>
+        <li>Для средних и крупных проектов определяйте в переменных цвета ссылок, бордюры, тени и прочие часто использующиеся величины.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax  less">
+          <span class="code__line"> </span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
 
 
   <footer class="page-footer">
