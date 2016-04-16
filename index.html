@@ -213,7 +213,17 @@
       <h3>Как отличить БЭМ-блок и БЭМ-элемент</h3>
       <p>Просто задайте себе вопрос: эта сущность может потребоваться мне отдельно, сама по себе? Или она нужна только внутри её родителя? Если нужна отдельно — это БЭМ-блок, если мыслима только внутри родителя — это БЭМ-элемент.</p>
       <p>В действительно сомнительных случаях делайте выбор в пользу БЭМ-блока.</p>
-      <p>Изредка бывает так, что проект развивается и некоторые БЭМ-элементы может потребоваться сделать БЭМ-блоками. Старайтесь предугадывать подобный исход событий.</p>
+      <p>Не забывайте о миксовании (возможности иметь на одном теге и класс уровня БЭМ-элемента какого-то родительского блока, и свой класс уровня БЭМ-блока).</p>
+    </div>
+    <div class="col">
+      <h3>Всегда являются БЕМ-блоками:</h3>
+      <ul>
+        <li>кнопка,</li>
+        <li>блок формы (с элементами: название поля, поле, пояснение, сообщение об ошибке, ect.),</li>
+        <li>запись в блоге,</li>
+        <li>товар в каталоге,</li>
+        <li>табы, карусель, соц. ссылки.</li>
+      </ul>
     </div>
   </div>
 
@@ -477,22 +487,63 @@
     <div class="col">
       <h3>Переменные</h3>
       <ul>
-        <li>Выносите в переменные:
+        <li>Выносите в переменные (как минимум):
           <ul>
             <li>цвета (<a href="http://nicothin.pro/page/preprocessor-color-functions">подробнее о цветах в переменных</a>),</li>
             <li>размеры шрифтов, шрифтовые семейства, интерлиньяж,</li>
-            <li>брейкпоинты (или условия для <code>@media</code> целиком),</li>
+            <li>брейкпоинты (или условия для <code>@media</code> целиком).</li>
           </ul>
         </li>
         <li>Для средних и крупных проектов определяйте в переменных цвета ссылок, бордюры, тени и прочие часто использующиеся величины.</li>
+        <li>Отделяйте смысловые блоки с переменными пустыми строками.</li>
+        <li>Используйте БЭМ-именование для переменных.</li>
       </ul>
     </div>
     <div class="col">
       <pre class="code">
         <code class="code__syntax  less">
+          <span class="code__line">@color-main:                  #0275d8;</span>
+          <span class="code__line">@color-success:               #5cb85c;</span>
+          <span class="code__line">@color-danger:                #d9534f;</span>
           <span class="code__line"> </span>
+          <span class="code__line">@text-color:                  @gray-darkest;</span>
+          <span class="code__line">@text-color--muted:           @gray;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">@font-size:                   1.6rem;</span>
+          <span class="code__line">@font-size--h1:               3rem;</span>
+          <span class="code__line">...</span>
+          <span class="code__line">@font-size--small:            0.75em;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">@line-height:                 1.375em;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">@font-family:                 'Roboto', Arial, sans-serif;</span>
+          <span class="code__line"> </span>
+          <span class="code__line">@screen-xs:                   0;</span>
+          <span class="code__line">@screen-sm:                   480px;</span>
+          <span class="code__line">@screen-md:                   768px;</span>
+          <span class="code__line">@screen-lg:                   992px;</span>
+          <span class="code__line">@screen-xl:                   1200px;</span>
         </code>
       </pre>
+    </div>
+  </div>
+
+  <div class="section" id="mixins">
+    <div class="col">
+      <h3>Примеси</h3>
+      <ul>
+        <li>Не пришите примеси без нужды! Писать примесь не нужно, когда:
+          <ul>
+            <li>В примеси 1-2 правила.</li>
+            <li>Примесь нужна на 1-2 вызова.</li>
+            <li>Примесь уже была написана кем-то/Вами ранее (<code>.clearfix();</code>).</li>
+          </ul>
+        </li>
+        <li>Делайте примеси как можно проще.</li>
+        <li>Используйте <a href="https://github.com/twbs/bootstrap/tree/master/less/mixins">уже готовые</a> <a href="https://github.com/zurb/foundation-sites/blob/develop/scss/util/_mixins.scss">наборы</a> <a href="https://github.com/nicothin/NTH-start-project/tree/master/src/less/mixins">примесей</a>.</li>
+        <li>Не передавайте в примеси наборы правил (для «оборачивания» их в <code>@media</code>).</li>
+        <li>(LESS) При вызове примеси всегда пишите скобки.</li>
+      </ul>
     </div>
   </div>
 
