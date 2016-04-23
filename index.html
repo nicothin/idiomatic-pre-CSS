@@ -422,6 +422,7 @@
         <li>Вкладывайте <code>@media</code> в селекторы, а не наоборот.</li>
         <li>Не вкладывайте <code>@media</code> друг в друга.</li>
         <li>Предпочтите путь mobile-first, избегайте указания <code>@media</code>-условия max-width в пользу min-width.</li>
+        <li>Пишите <code>@media</code> рядом, не пишите селекторы между ними.</li>
       </ul>
     </div>
     <div class="col">
@@ -454,6 +455,7 @@
             <li>псевдоэлементом или псевдоселектором.</li>
           </ul>
         </li>
+        <li>Внутри контекста блока пишите сначала псевдоселекторы и псевдоэлементы, потом модификаторы, потом элементы блока.</li>
         <li><strong>Никогда</strong> не используйте амперсанд в&nbsp;местах разделения слов в&nbsp;селекторах.</li>
         <li><strong>Никогда</strong> не повторяйте написанный с амперсандом селектор внутри одного контекста.</li>
       </ul>
@@ -463,18 +465,18 @@
         <code class="code__syntax  less">
           <span class="code__line">.promo {</span>
           <span class="code__line">  </span>
+          <span class="code__line">  // Правильно: амперсанд перед псевдоклассом</span>
+          <span class="code__line">  &:hover { ... }</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  // Правильно: амперсанд перед разделителем модификатора</span>
+          <span class="code__line">  &--large { ... }</span>
+          <span class="code__line">  </span>
           <span class="code__line">  // Правильно: амперсанд перед разделителем элемента</span>
           <span class="code__line">  &__item {</span>
           <span class="code__line">  </span>
           <span class="code__line">    // НЕПРАВИЛЬНО: амперсанд в месте разделения слова</span>
           <span class="code__line">    &-link { ... }</span>
           <span class="code__line">  }</span>
-          <span class="code__line">  </span>
-          <span class="code__line">  // Правильно: амперсанд перед разделителем модификатора</span>
-          <span class="code__line">  &--large { ... }</span>
-          <span class="code__line">  </span>
-          <span class="code__line">  // Правильно: амперсанд перед псевдоклассом</span>
-          <span class="code__line">  &:hover { ... }</span>
           <span class="code__line">  </span>
           <span class="code__line">  // НЕПРАВИЛЬНО: амперсанд в месте разделения слова</span>
           <span class="code__line">  &-shover { ... }</span>
