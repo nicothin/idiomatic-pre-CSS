@@ -175,6 +175,7 @@ pre code {
   white-space: normal;
   tab-size: 2;
   max-height: 50rem;
+  box-sizing: border-box;
 }
 
 .code__line {
