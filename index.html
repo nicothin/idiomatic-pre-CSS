@@ -480,7 +480,7 @@
             <li>псевдоэлементом или псевдоселектором.</li>
           </ul>
         </li>
-        <li>Внутри контекста блока пишите сначала псевдоселекторы и псевдоэлементы, потом модификаторы, потом элементы блока.</li>
+        <li>Внутри контекста блока пишите сначала псевдоселекторы и псевдоэлементы, потом элементы блока, потом модификаторы блока.</li>
         <li><strong>Никогда</strong> не используйте амперсанд в&nbsp;местах разделения слов в&nbsp;селекторах.</li>
         <li><strong>Никогда</strong> не повторяйте написанный с амперсандом селектор внутри одного контекста.</li>
       </ul>
@@ -492,9 +492,6 @@
           <span class="code__line">  </span>
           <span class="code__line">  // Правильно: амперсанд перед псевдоклассом</span>
           <span class="code__line">  &:hover { ... }</span>
-          <span class="code__line"> </span>
-          <span class="code__line">  // Правильно: амперсанд перед разделителем модификатора</span>
-          <span class="code__line">  &--large { ... }</span>
           <span class="code__line">  </span>
           <span class="code__line">  // Правильно: амперсанд перед разделителем элемента</span>
           <span class="code__line">  &__item {</span>
@@ -506,8 +503,7 @@
           <span class="code__line">  // НЕПРАВИЛЬНО: амперсанд в месте разделения слова</span>
           <span class="code__line">  &-shover { ... }</span>
           <span class="code__line">  </span>
-          <span class="code__line">  // НЕПРАВИЛЬНО: в этом контексте уже есть такой селектор</span>
-          <span class="code__line">  // НЕЖЕЛАТЕЛЬНО: модификаторы нужно писать перед элементами</span>
+          <span class="code__line">  // Правильно: модификаторы нужно писать под элементами</span>
           <span class="code__line">  &--large { ... }</span>
           <span class="code__line">  </span>
           <span class="code__line">}</span>
