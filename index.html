@@ -427,14 +427,19 @@
       <pre class="code">
         <code class="code__syntax less">
           <span class="code__line"># style.less</span>
-          <span class="code__line">@import 'variables.less';           # правильно</span>
-          <span class="code__line">@import 'mixins.less';              # правильно</span>
+          <span class="code__line">@import 'variables.less';           // правильно</span>
+          <span class="code__line">@import 'mixins.less';              // правильно</span>
           <span class="code__line"> </span>
-          <span class="code__line">@import '../blocks/page-header/page-header.less';   # правильно</span>
-          <span class="code__line">@import '../blocks/page-footer/page-footer.less';   # правильно</span>
-          <span class="code__line">@import '../blocks/promo/promo.less';               # правильно</span>
-          <span class="code__line">@import 'responsive-imports.less';  # неправильно, если внутри этого файла есть импорты</span>
-          <span class="code__line">@import 'top-part-page.less';       # неправильно, если нет такого БЭМ-блока</span>
+          <span class="code__line">@import '../blocks/page-header/page-header.less';   // правильно</span>
+          <span class="code__line">@import '../blocks/page-footer/page-footer.less';   // правильно</span>
+          <span class="code__line"> </span>
+          <span class="code__line">@import 'responsive-imports.less';  // неправильно, если внутри этого файла есть импорты</span>
+          <span class="code__line">@import 'top-part-page.less';       // неправильно, если нет такого БЭМ-блока</span>
+          <span class="code__line"> </span>
+          <span class="code__line">// неправильно, импорт внутри @media</span>
+          <span class="code__line">@media screen and (min-width: @laptop-min) {</span>
+          <span class="code__line">  @import '../blocks/promo/promo.less';</span>
+          <span class="code__line">}</span>
         </code>
       </pre>
     </div>
