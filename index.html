@@ -378,8 +378,6 @@
     <div class="col">
       <h3>Файловая организация</h3>
       <ul>
-        <li>Компилируйте один файл (диспетчер подключений), в котором подключаются все прочие.</li>
-        <li>Не пишите никаких селекторов в диспетчере подключений.</li>
         <li>Один БЭМ-блок = один препроцессорный файл. Всегда.</li>
         <li>Файл со стилизацией БЭМ-блока должен называться так же, как сам блок.</li>
         <li>Используйте «генераторы блоков» (<a href="https://gist.github.com/nicothin/1ba505f7cdfbe969600afcad6d9f1d33">простой пример</a>, <a href="https://github.com/nicothin/NTH-start-project/blob/master/createBlock.js">пример посложнее</a>) для ускорения работы.</li>
@@ -388,6 +386,7 @@
     <div class="col">
       <pre class="code">
         <code class="code__syntax bash">
+          <span class="code__line"># Один из вариантов файловой организации (удобно должно быть ВАМ)</span>
           <span class="code__line">src/                   # папка с исходниками, из которых собирается проект</span>
           <span class="code__line">  blocks/              # папка с БЭМ-блоками</span>
           <span class="code__line">    page-header/       # папка БЭМ-блока</span>
@@ -401,12 +400,40 @@
           <span class="code__line">  less/</span>
           <span class="code__line">    global/                   # папка с глобальными стилями</span>
           <span class="code__line">      global-fonts.less       # подключение шрифтов</span>
-          <span class="code__line">      global-scaffolding.less # стилизация body, ссылок...</span>
+          <span class="code__line">      global-scaffolding.less # стилизация body, ссылок и прочей мелочи</span>
           <span class="code__line">      global-type.less        # типографика</span>
           <span class="code__line">      ...</span>
           <span class="code__line">    mixins/            # папка с примесями</span>
           <span class="code__line">    style.less         # диспетчер подключений</span>
           <span class="code__line">    variables.less     # переменные проекта</span>
+        </code>
+      </pre>
+    </div>
+  </div>
+
+  <div class="section" id="import">
+    <div class="col">
+      <h3>@import</h3>
+      <ul>
+        <li>Компилируйте один файл (диспетчер подключений), в котором подключаются все прочие.</li>
+        <li>Импортируйте файлы только в диспетчере подключений (допустимо импортировать примеси внутри отдельного файла, например, <code>mixins.less</code>).</li>
+        <li>Не пишите никаких селекторов в диспетчере подключений.</li>
+        <li>Не импортируйте файлы внутри медиа-условий.</li>
+        <li>Один БЭМ-блок = один препроцессорный файл. <strong>Всегда</strong>.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <pre class="code">
+        <code class="code__syntax bash">
+          <span class="code__line"># style.less</span>
+          <span class="code__line">@import 'variables.less';           # правильно</span>
+          <span class="code__line">@import 'mixins.less';              # правильно</span>
+          <span class="code__line"> </span>
+          <span class="code__line">@import '../blocks/page-header/page-header.less';   # правильно</span>
+          <span class="code__line">@import '../blocks/page-footer/page-footer.less';   # правильно</span>
+          <span class="code__line">@import '../blocks/promo/promo.less';               # правильно</span>
+          <span class="code__line">@import 'responsive-imports.less';  # неправильно, если внутри этого файла есть импорты</span>
+          <span class="code__line">@import 'top-part-page.less';       # неправильно, если нет такого БЭМ-блока</span>
         </code>
       </pre>
     </div>
