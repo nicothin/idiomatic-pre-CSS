@@ -35,7 +35,7 @@
         <li><a href="#bem-block">Блок — это самостоятельная часть страницы</a></li>
         <li><a href="#bem-block-inside">Блоки можно и&nbsp;нужно вкладывать друг в&nbsp;друга</a></li>
         <li><a href="#bem-elem">Элемент — часть БЭМ-блока</a></li>
-        <li><a href="#bem-elem-in">Элемент нельзя использовать вне&nbsp;его&nbsp;блока</a></li>
+        <li><a href="#bem-elem-in">Элемент вне&nbsp;его&nbsp;блока</a></li>
         <li><a href="#bem-no-elem">Элементов может не&nbsp;быть</a></li>
         <li><a href="#bem-block-elem">Как отличить БЭМ-блок и БЭМ-элемент</a></li>
         <li><a href="#bem-mod">Модификатор — дополнительный класс для&nbsp;смены оформления или&nbsp;поведения</a></li>
@@ -179,24 +179,17 @@
 
   <div class="section" id="bem-elem-in">
     <div class="col">
-      <h3>Элемент нельзя использовать вне&nbsp;его&nbsp;блока</h3>
-      <P>Элемент — <strong>всегда часть блока</strong>, вне своего блока использоваться не&nbsp;должен.</p>
+      <h3>Элемент можно использовать вне&nbsp;его&nbsp;блока только в исключительных случаях</h3>
+      <p>Элемент — <strong>часть блока</strong>, но, поскольку, БЭМ-дерево независимо от&nbsp;HTML-дерева, элемент <a href="https://en.bem.info/forum/43/">можно использовать</a> и&nbsp;вне его&nbsp;блока <b>в&nbsp;некоторых исключительных условиях</b>. Условие — обязательное наличие на странице самого блока.</p>
+      <p>Примером использования элемента вне блока является расположение попапа не&nbsp;внутри блока-обертки, а&nbsp;в&nbsp;самом конце DOM (дабы показывать независимо от&nbsp;ограничения видимости родителей).</p>
+      <p>Если Вы используете БЭМ только как&nbsp;метод именования селекторов, при&nbsp;написании разметки никогда не&nbsp;используйте элемент вне&nbsp;блока.</p>
     </div>
     <div class="col">
-      <pre class="code">
-        <code class="code__syntax  html">
-          <span class="code__line">&lt;!-- Нет ошибки: элементы лежат внутри своего блока --&gt;</span>
-          <span class="code__line">&lt;div class=&quot;product&quot;&gt;</span>
-          <span class="code__line">  &lt;img class=&quot;product__image&quot; src=&quot;...&quot; alt=&quot;...&quot;&gt;</span>
-          <span class="code__line">  &lt;p class=&quot;product__description&quot;&gt;...&lt;/p&gt;</span>
-          <span class="code__line">  &lt;a class=&quot;product__more-link&quot; href=&quot;&quot;&gt;...&lt;/a&gt;</span>
-          <span class="code__line">&lt;/div&gt;</span>
-          <span class="code__line"> </span>
-          <span class="code__line">&lt;!-- ОШИБКА: какой-то элемент вне своего блока --&gt;</span>
-          <span class="code__line">&lt;!-- (Вокруг фрагмента нет обёртки с .page-header) --&gt;</span>
-          <span class="code__line">&lt;form class=&quot;page-header__search&quot;&gt;...&lt;/form&gt;</span>
-        </code>
-      </pre>
+      <h3>Почему нельзя просто так располагать элемент вне&nbsp;блока:</h3>
+      <ul>
+        <li>теряется логика разметки,</li>
+        <li>сложно стилизовать элементы, которые могут оказаться где&nbsp;угодно (float, абс. позиционирование и&nbsp;некоторые другие стили элемента могут «сломать» верстку).</li>
+      </ul>
     </div>
   </div>
 
