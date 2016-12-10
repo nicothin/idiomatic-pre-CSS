@@ -476,6 +476,7 @@
         <li>Не вкладывайте <code>@media</code> друг в друга.</li>
         <li>Предпочтите путь mobile-first, избегайте указания <code>@media</code>-условия max-width в пользу min-width.</li>
         <li>Пишите <code>@media</code> рядом, не пишите селекторы между ними.</li>
+        <li>Пишите условия для <code>@media</code> там, где используете <code>@media</code>, не пишите условия в переменных.</li>
       </ul>
     </div>
     <div class="col">
@@ -484,11 +485,17 @@
           <span class="code__line">.promo {</span>
           <span class="code__line">  display: block;</span>
           <span class="code__line">  </span>
-          <span class="code__line">  @media (...) {</span>
+          <span class="code__line">  // Хорошо: условие очевидно, в переменной только ширина</span>
+          <span class="code__line">  @media (min-width: @screen-md) {</span>
           <span class="code__line">    display: none;</span>
           <span class="code__line">  }</span>
           <span class="code__line">  </span>
-          <span class="code__line">  @media (...) {</span>
+          <span class="code__line">  @media (min-width: @screen-lg) {</span>
+          <span class="code__line">    display: block;</span>
+          <span class="code__line">  }</span>
+          <span class="code__line"> </span>
+          <span class="code__line">  // Плохо: условие целиком вынесено в переменную</span>
+          <span class="code__line">  @media (@mobile-width) {</span>
           <span class="code__line">    display: block;</span>
           <span class="code__line">  }</span>
           <span class="code__line">}</span>
