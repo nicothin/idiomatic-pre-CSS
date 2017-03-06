@@ -466,7 +466,6 @@
         </li>
         <li><strong>Никогда</strong> не используйте амперсанд в&nbsp;местах разделения словосочетаний имён блоков, элементов или модификаторов (см. пример).</li>
         <li><strong>Никогда</strong> не повторяйте написанный с амперсандом селектор внутри одного контекста.</li>
-        <li>Внутри контекста блока пишите сначала псевдоселекторы и псевдоэлементы, потом элементы блока, потом модификаторы блока.</li>
       </ul>
     </div>
     <div class="col">
@@ -487,6 +486,49 @@
 <span class="code__line">  </span>
 <span class="code__line">  // Правильно: модификаторы нужно писать под элементами</span>
 <span class="code__line">  &--large { ... }</span>
+<span class="code__line">  </span>
+<span class="code__line">}</span></code></pre>
+    </div>
+  </div>
+
+  <div class="section" id="amp">
+    <div class="col">
+      <h3>Очередность написания в контексте селектора</h3>
+      <p>В контексте селектора используйте следующую очередность:</p>
+      <ol>
+        <li>Стилевые правила для этого селектора.</li>
+        <li>Вложенные сторонние селекторы.</li>
+        <li>Псевдоселекторы и псевдоэлементы.</li>
+        <li><code>@media</code> этого контекста.</li>
+        <li>БЭМ-элементы.</li>
+        <li>БЭМ-модификаторы.</li>
+      </ol>
+    </div>
+    <div class="col">
+      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">.page-header { // БЭМ-блок. Корневой контекст.</span>
+<span class="code__line">  position: relative;</span>
+<span class="code__line">  display: block;</span>
+<span class="code__line">  </span>
+<span class="code__line">  .fp-tableCell { ... }</span>
+<span class="code__line">  </span>
+<span class="code__line">  &:before { ... }</span>
+<span class="code__line">  </span>
+<span class="code__line">  @media (min-width: @screen-lg) { ... }</span>
+<span class="code__line">  </span>
+<span class="code__line">  &__item {</span>
+<span class="code__line">    display: block;</span>
+<span class="code__line">  </span>
+<span class="code__line">    &:before { ... }</span>
+<span class="code__line">  </span>
+<span class="code__line">    @media (min-width: @screen-md) { ... }</span>
+<span class="code__line">  }</span>
+<span class="code__line">  </span>
+<span class="code__line">  &--large {</span>
+<span class="code__line">  </span>
+<span class="code__line">    .page-header__item { ... }</span>
+<span class="code__line">  </span>
+<span class="code__line">    @media (min-width: @screen-md) { ... }</span>
+<span class="code__line">  }</span>
 <span class="code__line">  </span>
 <span class="code__line">}</span></code></pre>
     </div>
