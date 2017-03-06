@@ -54,6 +54,7 @@
         <li><a href="#nested">Вложенные селекторы</a></li>
         <li><a href="#media">@media</a></li>
         <li><a href="#amp">Амперсанд</a></li>
+        <li><a href="#priority">Очередность написания вложенных селекторов</a></li>
         <li><a href="#vars">Переменные</a></li>
         <li><a href="#mixins">Примеси</a></li>
       </ul>
@@ -491,7 +492,7 @@
     </div>
   </div>
 
-  <div class="section" id="amp">
+  <div class="section" id="priority">
     <div class="col">
       <h3>Очередность написания в контексте селектора</h3>
       <p>В контексте селектора используйте следующую очередность:</p>
@@ -505,7 +506,7 @@
       </ol>
     </div>
     <div class="col">
-      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">.page-header { // БЭМ-блок. Корневой контекст.</span>
+      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">.page-header {</span>
 <span class="code__line">  position: relative;</span>
 <span class="code__line">  display: block;</span>
 <span class="code__line">  </span>
