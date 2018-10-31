@@ -487,8 +487,8 @@
       <ol>
         <li>Стилевые правила для этого селектора.</li>
         <li><code>@media</code> этого контекста.</li>
-        <li>Вложенные сторонние селекторы.</li>
         <li>Псевдоселекторы и псевдоэлементы.</li>
+        <li>Вложенные сторонние селекторы.</li>
         <li>БЭМ-элементы.</li>
         <li>БЭМ-модификаторы.</li>
       </ol>
@@ -498,12 +498,12 @@
 <span class="code__line">  position: relative;</span>
 <span class="code__line">  display: block;</span>
 <span class="code__line">  </span>
-<span class="code__line">  // Этот блок простилизован в другом файле, тут только каскадная модификация</span>
-<span class="code__line">  .fp-tableCell { ... }</span>
+<span class="code__line">  @media (min-width: @screen-lg) { ... }</span>
 <span class="code__line">  </span>
 <span class="code__line">  &:before { ... }</span>
 <span class="code__line">  </span>
-<span class="code__line">  @media (min-width: @screen-lg) { ... }</span>
+<span class="code__line">  // Этот блок простилизован в другом файле, тут только каскадная модификация</span>
+<span class="code__line">  .fp-tableCell { ... }</span>
 <span class="code__line">  </span>
 <span class="code__line">  &__item {</span>
 <span class="code__line">    display: block;</span>
