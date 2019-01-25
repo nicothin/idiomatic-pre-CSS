@@ -287,12 +287,12 @@
       <p>В файловой системе при работе с CSS-препроцессорами каждый БЭМ-блок должен быть описан в своём отдельном файле.</p>
     </div>
     <div class="col">
-      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">// файл slider.less</span>
+      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">// файл slider.scss</span>
 <span class="code__line">.slider {</span>
 <span class="code__line">  ...</span>
 <span class="code__line">}</span>
 <span class="code__line"> </span>
-<span class="code__line">// файл promo.less</span>
+<span class="code__line">// файл promo.scss</span>
 <span class="code__line">.promo {</span>
 <span class="code__line">  ...</span>
 <span class="code__line">}</span></code></pre>
@@ -342,7 +342,7 @@
 <span class="code__line">  blocks/              # папка с БЭМ-блоками</span>
 <span class="code__line">    page-header/       # папка БЭМ-блока</span>
 <span class="code__line">      img/             # картинки, используемые в БЭМ-блоке</span>
-<span class="code__line">      page-header.less # стилизация БЭМ-блока</span>
+<span class="code__line">      page-header.scss # стилизация БЭМ-блока</span>
 <span class="code__line">      page-header.html # разметка БЭМ-блока (не обязательно)</span>
 <span class="code__line">      page-header.js   # доп. интерактив БЭМ-блока (не обязательно)</span>
 <span class="code__line">    page-footer/       # папка БЭМ-блока</span>
@@ -350,8 +350,8 @@
 <span class="code__line">    ...</span>
 <span class="code__line">  less/</span>
 <span class="code__line">    mixins/            # папка с примесями</span>
-<span class="code__line">    style.less         # диспетчер подключений (только импорты)</span>
-<span class="code__line">    variables.less     # переменные проекта</span></code></pre>
+<span class="code__line">    style.scss         # диспетчер подключений (только импорты)</span>
+<span class="code__line">    variables.scss     # переменные проекта</span></code></pre>
     </div>
   </div>
 
@@ -360,26 +360,26 @@
       <h3>@import</h3>
       <ul>
         <li>Компилируйте один файл (диспетчер подключений), в котором подключаются все прочие.</li>
-        <li>Импортируйте файлы только в диспетчере подключений (допустимо импортировать примеси внутри отдельного файла, например, <code>mixins.less</code>).</li>
+        <li>Импортируйте файлы только в диспетчере подключений (допустимо импортировать примеси внутри отдельного файла, например, <code>mixins.scss</code>).</li>
         <li>Не пишите никаких селекторов в диспетчере подключений.</li>
         <li>Не импортируйте файлы внутри медиа-условий.</li>
         <li>Один БЭМ-блок = один препроцессорный файл. <strong>Всегда</strong>.</li>
       </ul>
     </div>
     <div class="col">
-      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">// style.less</span>
-<span class="code__line">@import 'variables.less';           // правильно</span>
-<span class="code__line">@import 'mixins.less';              // правильно</span>
+      <pre class="code"><code class="code__syntax  lang-less"><span class="code__line">// style.scss</span>
+<span class="code__line">@import 'variables.scss';           // правильно</span>
+<span class="code__line">@import 'mixins.scss';              // правильно</span>
 <span class="code__line"> </span>
-<span class="code__line">@import '../blocks/page-header/page-header.less';   // правильно</span>
-<span class="code__line">@import '../blocks/page-footer/page-footer.less';   // правильно</span>
+<span class="code__line">@import '../blocks/page-header/page-header.scss';   // правильно</span>
+<span class="code__line">@import '../blocks/page-footer/page-footer.scss';   // правильно</span>
 <span class="code__line"> </span>
-<span class="code__line">@import 'responsive-imports.less';  // неправильно, если внутри этого файла есть импорты</span>
-<span class="code__line">@import 'top-part-page.less';       // неправильно, если нет такого БЭМ-блока</span>
+<span class="code__line">@import 'responsive-imports.scss';  // неправильно, если внутри этого файла есть импорты</span>
+<span class="code__line">@import 'top-part-page.scss';       // неправильно, если нет такого БЭМ-блока</span>
 <span class="code__line"> </span>
 <span class="code__line">// неправильно, импорт внутри @media</span>
-<span class="code__line">@media screen and (min-width: @laptop-min) {</span>
-<span class="code__line">  @import '../blocks/promo/promo.less';</span>
+<span class="code__line">@media screen and (min-width: $laptop-min) {</span>
+<span class="code__line">  @import '../blocks/promo/promo.scss';</span>
 <span class="code__line">}</span></code></pre>
     </div>
   </div>
@@ -426,16 +426,16 @@
 <span class="code__line">  display: block;</span>
 <span class="code__line">  </span>
 <span class="code__line">  // Хорошо: условие очевидно, в переменной только ширина</span>
-<span class="code__line">  @media (min-width: @screen-md) {</span>
+<span class="code__line">  @media (min-width: $screen-md) {</span>
 <span class="code__line">    display: none;</span>
 <span class="code__line">  }</span>
 <span class="code__line">  </span>
-<span class="code__line">  @media (min-width: @screen-lg) {</span>
+<span class="code__line">  @media (min-width: $screen-lg) {</span>
 <span class="code__line">    display: block;</span>
 <span class="code__line">  }</span>
 <span class="code__line"> </span>
 <span class="code__line">  // Плохо: условие целиком вынесено в переменную (неочевидность)</span>
-<span class="code__line">  @media (@mobile-width) {</span>
+<span class="code__line">  @media ($mobile-width) {</span>
 <span class="code__line">    display: block;</span>
 <span class="code__line">  }</span>
 <span class="code__line">}</span></code></pre>
@@ -498,7 +498,7 @@
 <span class="code__line">  position: relative;</span>
 <span class="code__line">  display: block;</span>
 <span class="code__line">  </span>
-<span class="code__line">  @media (min-width: @screen-lg) { ... }</span>
+<span class="code__line">  @media (min-width: $screen-lg) { ... }</span>
 <span class="code__line">  </span>
 <span class="code__line">  &:before { ... }</span>
 <span class="code__line">  </span>
@@ -510,14 +510,14 @@
 <span class="code__line">  </span>
 <span class="code__line">    &:before { ... }</span>
 <span class="code__line">  </span>
-<span class="code__line">    @media (min-width: @screen-md) { ... }</span>
+<span class="code__line">    @media (min-width: $screen-md) { ... }</span>
 <span class="code__line">  }</span>
 <span class="code__line">  </span>
 <span class="code__line">  &--large {</span>
 <span class="code__line">  </span>
 <span class="code__line">    .page-header__item { ... }</span>
 <span class="code__line">  </span>
-<span class="code__line">    @media (min-width: @screen-md) { ... }</span>
+<span class="code__line">    @media (min-width: $screen-md) { ... }</span>
 <span class="code__line">  }</span>
 <span class="code__line">  </span>
 <span class="code__line">}</span></code></pre>
@@ -542,27 +542,27 @@
       </ul>
     </div>
     <div class="col">
-      <pre class="code"><code class="lang-less  code__syntax"><span class="code__line">@color-main:                  #0275d8;</span>
-<span class="code__line">@color-success:               #5cb85c;</span>
-<span class="code__line">@color-danger:                #d9534f;</span>
+      <pre class="code"><code class="lang-less  code__syntax"><span class="code__line">$color-main:                  #0275d8;</span>
+<span class="code__line">$color-success:               #5cb85c;</span>
+<span class="code__line">$color-danger:                #d9534f;</span>
 <span class="code__line"> </span>
-<span class="code__line">@text-color:                  @gray-darkest;</span>
-<span class="code__line">@text-color--muted:           @gray;</span>
+<span class="code__line">$text-color:                  $gray-darkest;</span>
+<span class="code__line">$text-color--muted:           $gray;</span>
 <span class="code__line"> </span>
-<span class="code__line">@font-size:                   1.6rem;</span>
-<span class="code__line">@font-size--h1:               3rem;</span>
+<span class="code__line">$font-size:                   1.6rem;</span>
+<span class="code__line">$font-size--h1:               3rem;</span>
 <span class="code__line">...</span>
-<span class="code__line">@font-size--small:            0.75em;</span>
+<span class="code__line">$font-size--small:            0.75em;</span>
 <span class="code__line"> </span>
-<span class="code__line">@line-height:                 1.375em;</span>
+<span class="code__line">$line-height:                 1.375em;</span>
 <span class="code__line"> </span>
-<span class="code__line">@font-family:                 'Roboto', Arial, sans-serif;</span>
+<span class="code__line">$font-family:                 'Roboto', Arial, sans-serif;</span>
 <span class="code__line"> </span>
-<span class="code__line">@screen-xs:                   0;</span>
-<span class="code__line">@screen-sm:                   480px;</span>
-<span class="code__line">@screen-md:                   768px;</span>
-<span class="code__line">@screen-lg:                   992px;</span>
-<span class="code__line">@screen-xl:                   1200px;</span></code></pre>
+<span class="code__line">$screen-xs:                   0;</span>
+<span class="code__line">$screen-sm:                   480px;</span>
+<span class="code__line">$screen-md:                   768px;</span>
+<span class="code__line">$screen-lg:                   992px;</span>
+<span class="code__line">$screen-xl:                   1200px;</span></code></pre>
     </div>
   </div>
 
@@ -601,7 +601,7 @@ var _self="undefined"!=typeof window?window:"undefined"!=typeof WorkerGlobalScop
 Prism.languages.markup={comment:/<!--[\w\W]*?-->/,prolog:/<\?[\w\W]+?\?>/,doctype:/<!DOCTYPE[\w\W]+?>/i,cdata:/<!\[CDATA\[[\w\W]*?]]>/i,tag:{pattern:/<\/?(?!\d)[^\s>\/=$<]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\\1|\\?(?!\1)[\w\W])*\1|[^\s'">=]+))?)*\s*\/?>/i,inside:{tag:{pattern:/^<\/?[^\s>\/]+/i,inside:{punctuation:/^<\/?/,namespace:/^[^\s>\/:]+:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/i,inside:{punctuation:/[=>"']/}},punctuation:/\/?>/,"attr-name":{pattern:/[^\s>\/]+/,inside:{namespace:/^[^\s>\/:]+:/}}}},entity:/&#?[\da-z]{1,8};/i},Prism.hooks.add("wrap",function(a){"entity"===a.type&&(a.attributes.title=a.content.replace(/&amp;/,"&"))}),Prism.languages.xml=Prism.languages.markup,Prism.languages.html=Prism.languages.markup,Prism.languages.mathml=Prism.languages.markup,Prism.languages.svg=Prism.languages.markup;
 Prism.languages.css={comment:/\/\*[\w\W]*?\*\//,atrule:{pattern:/@[\w-]+?.*?(;|(?=\s*\{))/i,inside:{rule:/@[\w-]+/}},url:/url\((?:(["'])(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,selector:/[^\{\}\s][^\{\};]*?(?=\s*\{)/,string:{pattern:/("|')(\\(?:\r\n|[\w\W])|(?!\1)[^\\\r\n])*\1/,greedy:!0},property:/(\b|\B)[\w-]+(?=\s*:)/i,important:/\B!important\b/i,"function":/[-a-z0-9]+(?=\()/i,punctuation:/[(){};:]/},Prism.languages.css.atrule.inside.rest=Prism.util.clone(Prism.languages.css),Prism.languages.markup&&(Prism.languages.insertBefore("markup","tag",{style:{pattern:/(<style[\w\W]*?>)[\w\W]*?(?=<\/style>)/i,lookbehind:!0,inside:Prism.languages.css,alias:"language-css"}}),Prism.languages.insertBefore("inside","attr-value",{"style-attr":{pattern:/\s*style=("|').*?\1/i,inside:{"attr-name":{pattern:/^\s*style/i,inside:Prism.languages.markup.tag.inside},punctuation:/^\s*=\s*['"]|['"]\s*$/,"attr-value":{pattern:/.+/i,inside:Prism.languages.css}},alias:"language-css"}},Prism.languages.markup.tag));
 !function(e){var t={variable:[{pattern:/\$?\(\([\w\W]+?\)\)/,inside:{variable:[{pattern:/(^\$\(\([\w\W]+)\)\)/,lookbehind:!0},/^\$\(\(/],number:/\b-?(?:0x[\dA-Fa-f]+|\d*\.?\d+(?:[Ee]-?\d+)?)\b/,operator:/--?|-=|\+\+?|\+=|!=?|~|\*\*?|\*=|\/=?|%=?|<<=?|>>=?|<=?|>=?|==?|&&?|&=|\^=?|\|\|?|\|=|\?|:/,punctuation:/\(\(?|\)\)?|,|;/}},{pattern:/\$\([^)]+\)|`[^`]+`/,inside:{variable:/^\$\(|^`|\)$|`$/}},/\$(?:[a-z0-9_#\?\*!@]+|\{[^}]+\})/i]};e.languages.bash={shebang:{pattern:/^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/,alias:"important"},comment:{pattern:/(^|[^"{\\])#.*/,lookbehind:!0},string:[{pattern:/((?:^|[^<])<<\s*)(?:"|')?(\w+?)(?:"|')?\s*\r?\n(?:[\s\S])*?\r?\n\2/g,lookbehind:!0,greedy:!0,inside:t},{pattern:/(["'])(?:\\\\|\\?[^\\])*?\1/g,greedy:!0,inside:t}],variable:t.variable,"function":{pattern:/(^|\s|;|\||&)(?:alias|apropos|apt-get|aptitude|aspell|awk|basename|bash|bc|bg|builtin|bzip2|cal|cat|cd|cfdisk|chgrp|chmod|chown|chroot|chkconfig|cksum|clear|cmp|comm|command|cp|cron|crontab|csplit|cut|date|dc|dd|ddrescue|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|du|egrep|eject|enable|env|ethtool|eval|exec|expand|expect|export|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|getopts|git|grep|groupadd|groupdel|groupmod|groups|gzip|hash|head|help|hg|history|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|jobs|join|kill|killall|less|link|ln|locate|logname|logout|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|make|man|mkdir|mkfifo|mkisofs|mknod|more|most|mount|mtools|mtr|mv|mmv|nano|netstat|nice|nl|nohup|notify-send|npm|nslookup|open|op|passwd|paste|pathchk|ping|pkill|popd|pr|printcap|printenv|printf|ps|pushd|pv|pwd|quota|quotacheck|quotactl|ram|rar|rcp|read|readarray|readonly|reboot|rename|renice|remsync|rev|rm|rmdir|rsync|screen|scp|sdiff|sed|seq|service|sftp|shift|shopt|shutdown|sleep|slocate|sort|source|split|ssh|stat|strace|su|sudo|sum|suspend|sync|tail|tar|tee|test|time|timeout|times|touch|top|traceroute|trap|tr|tsort|tty|type|ulimit|umask|umount|unalias|uname|unexpand|uniq|units|unrar|unshar|uptime|useradd|userdel|usermod|users|uuencode|uudecode|v|vdir|vi|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yes|zip)(?=$|\s|;|\||&)/,lookbehind:!0},keyword:{pattern:/(^|\s|;|\||&)(?:let|:|\.|if|then|else|elif|fi|for|break|continue|while|in|case|function|select|do|done|until|echo|exit|return|set|declare)(?=$|\s|;|\||&)/,lookbehind:!0},"boolean":{pattern:/(^|\s|;|\||&)(?:true|false)(?=$|\s|;|\||&)/,lookbehind:!0},operator:/&&?|\|\|?|==?|!=?|<<<?|>>|<=?|>=?|=~/,punctuation:/\$?\(\(?|\)\)?|\.\.|[{}[\];]/};var a=t.variable[1].inside;a["function"]=e.languages.bash["function"],a.keyword=e.languages.bash.keyword,a.boolean=e.languages.bash.boolean,a.operator=e.languages.bash.operator,a.punctuation=e.languages.bash.punctuation}(Prism);
-Prism.languages.less=Prism.languages.extend("css",{comment:[/\/\*[\w\W]*?\*\//,{pattern:/(^|[^\\])\/\/.*/,lookbehind:!0}],atrule:{pattern:/@[\w-]+?(?:\([^{}]+\)|[^(){};])*?(?=\s*\{)/i,inside:{punctuation:/[:()]/}},selector:{pattern:/(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\([^{}]*\)|[^{};@])*?(?=\s*\{)/,inside:{variable:/@+[\w-]+/}},property:/(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/i,punctuation:/[{}();:,]/,operator:/[+\-*\/]/}),Prism.languages.insertBefore("less","punctuation",{"function":Prism.languages.less.function}),Prism.languages.insertBefore("less","property",{variable:[{pattern:/@[\w-]+\s*:/,inside:{punctuation:/:/}},/@@?[\w-]+/],"mixin-usage":{pattern:/([{;]\s*)[.#](?!\d)[\w-]+.*?(?=[(;])/,lookbehind:!0,alias:"function"}});
+Prism.languages.scss=Prism.languages.extend("css",{comment:[/\/\*[\w\W]*?\*\//,{pattern:/(^|[^\\])\/\/.*/,lookbehind:!0}],atrule:{pattern:/@[\w-]+?(?:\([^{}]+\)|[^(){};])*?(?=\s*\{)/i,inside:{punctuation:/[:()]/}},selector:{pattern:/(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\([^{}]*\)|[^{};@])*?(?=\s*\{)/,inside:{variable:/@+[\w-]+/}},property:/(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/i,punctuation:/[{}();:,]/,operator:/[+\-*\/]/}),Prism.languages.insertBefore("less","punctuation",{"function":Prism.languages.scss.function}),Prism.languages.insertBefore("less","property",{variable:[{pattern:/@[\w-]+\s*:/,inside:{punctuation:/:/}},/@@?[\w-]+/],"mixin-usage":{pattern:/([{;]\s*)[.#](?!\d)[\w-]+.*?(?=[(;])/,lookbehind:!0,alias:"function"}});
   </script>
 
 </body>
